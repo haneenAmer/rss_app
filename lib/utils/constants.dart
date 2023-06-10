@@ -14,3 +14,15 @@ const TextStyle OptionStyle = TextStyle(
   fontWeight: FontWeight.w600,
   fontFamily: 'Tajwal',
 );
+
+Widget VerticalSpace(height) {
+  return SizedBox(
+    height: height,
+  );
+}
+
+Widget HorizantalSpace(width) {
+  return SizedBox(
+    width: width,
+  );
+}
