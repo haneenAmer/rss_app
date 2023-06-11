@@ -20,6 +20,6 @@ flutter:
   fonts:
      - family: Tajawal
        fonts:
-         - asset: Tajawal-Regular.ttf
+         - asset: assets/fonts/Tajawal-Regular.ttf
   uses-material-design: true
 
