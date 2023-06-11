@@ -5,7 +5,6 @@ import 'package:rrs_app/utils/constants.dart';
 import 'favourite.dart';
 import 'home_screen.dart';
 import 'more_screen.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class NavBar extends StatefulWidget {
   @override
@@ -25,13 +24,13 @@ class _NavBarState extends State<NavBar> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: AppColors().greyBackground,
+        backgroundColor: AppColors.greyBackground,
         body: Center(
           child: _widgetOptions.elementAt(_selectedIndex),
         ),
         bottomNavigationBar: Container(
           decoration: BoxDecoration(
-            color: AppColors().whiteMain,
+            color: AppColors.whiteMain,
             boxShadow: [
               BoxShadow(
                 blurRadius: 20,
@@ -45,14 +44,14 @@ class _NavBarState extends State<NavBar> {
                   const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
               child: GNav(
                 // rippleColor: Color(0xff18D3AB)!,
-                hoverColor: AppColors().greenMain!,
+                hoverColor: AppColors.greenMain,
                 gap: 8,
-                activeColor: AppColors().blackMain,
+                activeColor: AppColors.blackMain,
                 iconSize: 24,
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
                 duration: Duration(milliseconds: 400),
-                tabBackgroundColor: AppColors().greenMain!,
-                color: AppColors().blackMain,
+                tabBackgroundColor: AppColors.greenMain,
+                color: AppColors.blackMain,
                 tabs: [
                   GButton(
                     icon: Icons.home,
