@@ -13,7 +13,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
-      backgroundColor: AppColors().greyBackground,
+      backgroundColor: AppColors.greyBackground,
     ));
   }
 }
