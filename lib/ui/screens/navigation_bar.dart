@@ -61,14 +61,17 @@ class _NavBarState extends State<NavBar> {
                   GButton(
                     icon: Icons.search,
                     text: 'البحث',
+                    textStyle: TextStyle(fontFamily: 'Tajawal'),
                   ),
                   GButton(
                     icon: Icons.favorite,
                     text: 'المفضلة',
+                    textStyle: TextStyle(fontFamily: 'Tajawal'),
                   ),
                   GButton(
                     icon: Icons.reorder,
                     text: 'المزيد',
+                    textStyle: TextStyle(fontFamily: 'Tajawal'),
                   ),
                 ],
                 selectedIndex: _selectedIndex,
