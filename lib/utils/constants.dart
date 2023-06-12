@@ -9,18 +9,18 @@ class AppColors {
 }
 
 const TextStyle OptionStyle = TextStyle(
-  fontSize: 30,
-  fontWeight: FontWeight.w600,
-  fontFamily: 'Tajwal',
-);
+    fontSize: 20,
+    fontWeight: FontWeight.bold,
+    fontFamily: 'Tajwal',
+    color: Colors.black);
 
-Widget VerticalSpace(height) {
+Widget VerticalSpace(double height) {
   return SizedBox(
     height: height,
   );
 }
 
-Widget HorizantalSpace(width) {
+SizedBox HorizantalSpace(double width) {
   return SizedBox(
     width: width,
   );
