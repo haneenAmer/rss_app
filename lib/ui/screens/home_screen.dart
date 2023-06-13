@@ -36,10 +36,10 @@ class _HomeScreenState extends State<HomeScreen> {
             width: double.infinity,
             height: 200,
             decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/ads.jpg'),
-                fit: BoxFit.fill,
-              ),
+              //image: DecorationImage(
+              //image: AssetImage('assets/images/ads.jpg'),
+              // fit: BoxFit.fill,
+              // ),
               color: Colors.amber,
               borderRadius: BorderRadius.circular(12),
             ),
@@ -55,15 +55,21 @@ class _HomeScreenState extends State<HomeScreen> {
                   padding: const EdgeInsets.all(8),
                   itemCount: 6,
                   itemBuilder: (BuildContext context, int index) {
-                    return Container(
-                      margin: EdgeInsets.all(5),
-                      height: 100,
-                      width: 100,
-                      decoration: BoxDecoration(
-                          color: Colors.red,
-                          borderRadius: BorderRadius.circular(4),
-                          image: DecorationImage(
-                              image: AssetImage('assts/images/ads.jpg'))),
+                    return Column(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.all(5),
+                          height: 100,
+                          width: 100,
+                          decoration: BoxDecoration(
+                            color: Colors.red,
+                            borderRadius: BorderRadius.circular(4),
+                            // image: DecorationImage(
+                            //  image: AssetImage('assts/images/ads.jpg'))
+                          ),
+                        ),
+                        VerticalSpace(12),
+                      ],
                     );
                   })),
         ]),
