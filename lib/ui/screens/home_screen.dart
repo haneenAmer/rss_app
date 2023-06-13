@@ -44,7 +44,6 @@ class _HomeScreenState extends State<HomeScreen> {
               borderRadius: BorderRadius.circular(12),
             ),
           ),
-          HorizantalSpace(12),
           Container(
               //margin: const EdgeInsets.symmetric(vertical: 8.0),
               //padding: EdgeInsets.only(left: 12),
@@ -55,22 +54,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   padding: const EdgeInsets.all(8),
                   itemCount: 6,
                   itemBuilder: (BuildContext context, int index) {
-                    return Column(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.all(5),
-                          height: 100,
-                          width: 100,
-                          decoration: BoxDecoration(
-                            color: Colors.red,
-                            borderRadius: BorderRadius.circular(4),
-                            // image: DecorationImage(
-                            //  image: AssetImage('assts/images/ads.jpg'))
-                          ),
-                        ),
-                        VerticalSpace(12),
-                      ],
+                    return Container(
+                      margin: EdgeInsets.all(5),
+                      height: 100,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        color: Colors.red,
+                        borderRadius: BorderRadius.circular(4),
+                        // image: DecorationImage(
+                        //  image: AssetImage('assts/images/ads.jpg'))
+                      ),
                     );
+                    VerticalSpace(12);
                   })),
         ]),
       ),
