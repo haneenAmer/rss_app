@@ -23,31 +23,53 @@ class OnBoarding extends StatelessWidget {
                 fit: BoxFit.fill,
                 image: AssetImage('assets/images/linearlayer.png')),
           ),
-          TextButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => NavBar()),
-                );
-              },
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: Container(
-                  alignment: Alignment.center,
-                  height: 70,
-                  width: 350,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    color: AppColors.greenMain,
-                  ),
-                  child: Text('ابدأ التصفح',
-                      style: TextStyle(
-                          fontFamily: 'Tajawal',
-                          color: Colors.black,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold)),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Column(
+              //crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text(
+                  textAlign: TextAlign.center,
+                  'مرحبا بك الى عالم المطاعم ',
+                  style: TextStyle(
+                      fontFamily: 'Tajawal',
+                      fontSize: 50,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
                 ),
-              ))
+                VerticalSpace(12),
+                Text(
+                  'ستجد المطعم المناسب خلال دقايق ',
+                  style: TextStyle(
+                      fontFamily: 'Tajawal', fontSize: 18, color: Colors.white),
+                ),
+                VerticalSpace(12),
+                TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => NavBar()),
+                      );
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      height: 70,
+                      width: 350,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        color: AppColors.greenMain,
+                      ),
+                      child: Text('ابدأ التصفح',
+                          style: TextStyle(
+                              fontFamily: 'Tajawal',
+                              color: Colors.black,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold)),
+                    )),
+              ],
+            ),
+          )
         ]),
       ),
     );
