@@ -9,10 +9,11 @@ class AppColors {
 }
 
 const TextStyle OptionStyle = TextStyle(
-    fontSize: 20,
-    fontWeight: FontWeight.bold,
-    fontFamily: 'Tajwal',
-    color: Colors.black);
+  fontSize: 20,
+  fontWeight: FontWeight.bold,
+  fontFamily: 'Tajawal',
+  color: Colors.black,
+);
 
 Widget VerticalSpace(double height) {
   return SizedBox(
