@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
           const Text('مستكشف المطاعم', style: OptionStyle),
         ],
         leading: const Padding(
-          padding: EdgeInsets.only(bottom: 12.0),
+          padding: EdgeInsets.only(bottom: 60.0),
           child: const Icon(
             Icons.person,
             color: AppColors.blackMain,
