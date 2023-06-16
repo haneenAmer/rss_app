@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rrs_app/ui/screens/signin_screen.dart';
 import 'package:rrs_app/utils/constants.dart';
 
 import 'navigation_bar.dart';
@@ -61,7 +62,7 @@ class OnBoarding extends StatelessWidget {
                         color: AppColors.greenMain,
                       ),
                       child: Text('ابدأ التصفح',
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontFamily: 'Tajawal',
                               color: Colors.black,
                               fontSize: 20,
