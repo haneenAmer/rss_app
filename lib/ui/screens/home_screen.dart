@@ -3,6 +3,8 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:rrs_app/utils/constants.dart';
 
+import 'Resturant_details.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -35,16 +37,22 @@ class _HomeScreenState extends State<HomeScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: ListView(scrollDirection: Axis.vertical, children: [
           Column(children: [
-            Container(
-              width: double.infinity,
-              height: 200,
-              decoration: BoxDecoration(
-                //image: DecorationImage(
-                //image: AssetImage('assets/images/ads.jpg'),
-                // fit: BoxFit.fill,
-                // ),
-                color: Colors.amber,
-                borderRadius: BorderRadius.circular(12),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: ((context) => ResDetails())));
+              },
+              child: Container(
+                width: double.infinity,
+                height: 200,
+                decoration: BoxDecoration(
+                  //image: DecorationImage(
+                  //image: AssetImage('assets/images/ads.jpg'),
+                  // fit: BoxFit.fill,
+                  // ),
+                  color: Colors.amber,
+                  borderRadius: BorderRadius.circular(12),
+                ),
               ),
             ),
             SizedBox(
