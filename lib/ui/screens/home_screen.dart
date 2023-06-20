@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
         leading: const Padding(
           padding: EdgeInsets.only(bottom: 60.0),
-          child: const Icon(
+          child: Icon(
             Icons.person,
             color: AppColors.blackMain,
             size: 30.0,
@@ -83,51 +83,56 @@ class _HomeScreenState extends State<HomeScreen> {
                         ],
                       );
                     })),
-            Padding(
-              padding: const EdgeInsets.only(left: 230.0),
-              child: const Text(
+            const Padding(
+              padding: EdgeInsets.only(left: 230.0),
+              child: Text(
                 'المطاعم الاكثر زيارة',
                 style: OptionStyle,
               ),
             ),
-            SizedBox(
-                height: MediaQuery.of(context).size.height,
-                width: double.infinity,
-                child: ListView.builder(
-                    //shrinkWrap: true,
-                    // physics:NeverScrollableScrollPhysics(),
-                    padding: const EdgeInsets.all(8),
-                    itemCount: 6,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Card(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
-                            Container(
-                              width: MediaQuery.of(context).size.width,
-                              child: Image(
-                                fit: BoxFit.fill,
-                                image: AssetImage('assets/images/ress.jpg'),
-                              ),
-                            ),
-                            VerticalSpace(22),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 12.0),
-                              child: Text('data'),
-                            ),
-                            VerticalSpace(22),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 12.0),
-                              child: Icon(Icons.star),
-                            ),
-                          ],
-                        ),
-                      );
-                    })),
+            containerList(6),
           ]),
         ]),
       ),
     ));
+  }
+
+  Widget containerList(int number) {
+    List<Widget> containerList = [];
+    for (var i = 0; i < number; i++) {
+      containerList.add(GestureDetector(
+        onTap: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: ((context) => const ResDetails())));
+        },
+        child: Card(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.2,
+                width: MediaQuery.of(context).size.width,
+                child: const Image(
+                  fit: BoxFit.fill,
+                  image: AssetImage('assets/images/ress.jpg'),
+                ),
+              ),
+              VerticalSpace(22),
+              const Padding(
+                padding: EdgeInsets.only(right: 12.0),
+                child: Text('data'),
+              ),
+              VerticalSpace(22),
+              const Padding(
+                padding: EdgeInsets.only(right: 12.0),
+                child: Icon(Icons.star),
+              ),
+            ],
+          ),
+        ),
+      ));
+    }
+    return Column(children: containerList);
   }
 }
