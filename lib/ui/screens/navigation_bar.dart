@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:rrs_app/ui/screens/search_page.dart';
 import 'package:rrs_app/utils/constants.dart';
-import 'favourite.dart';
+import 'favourite_screen.dart';
 import 'home_screen.dart';
 import 'more_screen.dart';
 
@@ -13,11 +13,11 @@ class NavBar extends StatefulWidget {
 
 class _NavBarState extends State<NavBar> {
   int _selectedIndex = 0;
-  List<Widget> _widgetOptions = <Widget>[
-    HomeScreen(),
-    SeachScreen(),
-    FavScreen(),
-    MoreScreen()
+  final List<Widget> _widgetOptions = <Widget>[
+    const HomeScreen(),
+    const SeachScreen(),
+    const FavScreen(),
+    const MoreScreen()
   ];
 
   @override
