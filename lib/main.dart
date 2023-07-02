@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rrs_app/ui/screens/home_screen.dart';
 import 'package:rrs_app/ui/screens/navigation_bar.dart';
 import 'package:rrs_app/ui/screens/onboarding_screen.dart';
+import 'package:rrs_app/ui/screens/resturant_details.dart';
 import 'package:rrs_app/ui/screens/signin_screen.dart';
 
 void main() {
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SigninScreen(),
+      home: ResturantDetailss(),
     );
   }
 }
