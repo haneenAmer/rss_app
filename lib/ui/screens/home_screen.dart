@@ -1,9 +1,8 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:rrs_app/ui/screens/resturant_details.dart';
 import 'package:rrs_app/utils/constants.dart';
-
-import 'Restaurant_details.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -37,22 +36,16 @@ class _HomeScreenState extends State<HomeScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: ListView(scrollDirection: Axis.vertical, children: [
           Column(children: [
-            GestureDetector(
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: ((context) => ResDetails())));
-              },
-              child: Container(
-                width: double.infinity,
-                height: 200,
-                decoration: BoxDecoration(
-                  //image: DecorationImage(
-                  //image: AssetImage('assets/images/ads.jpg'),
-                  // fit: BoxFit.fill,
-                  // ),
-                  color: Colors.amber,
-                  borderRadius: BorderRadius.circular(12),
-                ),
+            Container(
+              width: double.infinity,
+              height: 200,
+              decoration: BoxDecoration(
+                //image: DecorationImage(
+                //image: AssetImage('assets/images/ads.jpg'),
+                // fit: BoxFit.fill,
+                // ),
+                color: Colors.amber,
+                borderRadius: BorderRadius.circular(12),
               ),
             ),
             SizedBox(
@@ -102,8 +95,10 @@ class _HomeScreenState extends State<HomeScreen> {
     for (var i = 0; i < number; i++) {
       containerList.add(GestureDetector(
         onTap: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: ((context) => const ResDetails())));
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: ((context) => const ResturantDetailss())));
         },
         child: Card(
           child: Column(
