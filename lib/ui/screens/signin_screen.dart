@@ -47,7 +47,7 @@ class SigninScreen extends StatelessWidget {
                 alignment: Alignment(0.8, 0.5),
                 child: Text(
                   'مستكشف المطاعم',
-                  style: OptionStyle,
+                  style: HeadTextStyle,
                 )),
             TextButton(
               onPressed: () {

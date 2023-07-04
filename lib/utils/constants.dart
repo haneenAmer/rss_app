@@ -8,10 +8,18 @@ class AppColors {
   static const Color greyBorder = const Color(0xffA0AEC0);
 }
 
-const TextStyle OptionStyle = TextStyle(
+const TextStyle HeadTextStyle = TextStyle(
   fontSize: 20,
   fontWeight: FontWeight.bold,
   fontFamily: 'Tajawal',
+  color: Colors.black,
+);
+
+const TextStyle BodyTextStyle = TextStyle(
+  fontSize: 16,
+  fontWeight: FontWeight.bold,
+  fontFamily: 'Tajawal',
+  height: 1.5,
   color: Colors.black,
 );
 
