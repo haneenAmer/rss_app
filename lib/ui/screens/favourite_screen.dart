@@ -23,7 +23,7 @@ class _FavScreenState extends State<FavScreen> {
                   padding: EdgeInsets.only(left: 230.0),
                   child: Text(
                     'المطاعم الاكثر زيارة',
-                    style: OptionStyle,
+                    style: HeadTextStyle,
                   ),
                 ),
                 VerticalSpace(12),
