@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: AppColors.greyBackground,
       appBar: AppBar(
         actions: [
-          const Text('مستكشف المطاعم', style: OptionStyle),
+          const Text('مستكشف المطاعم', style: HeadTextStyle),
         ],
         leading: const Padding(
           padding: EdgeInsets.only(bottom: 60.0),
@@ -80,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: EdgeInsets.only(left: 230.0),
               child: Text(
                 'المطاعم الاكثر زيارة',
-                style: OptionStyle,
+                style: HeadTextStyle,
               ),
             ),
             containerList(6),
