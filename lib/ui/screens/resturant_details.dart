@@ -133,7 +133,9 @@ class ResturantDetailss extends StatelessWidget {
                                 style: BodyTextStyle,
                                 textAlign: TextAlign.right,
                               ))),
+
                       //////////---------- menue ---------------
+
                       const SizedBox(
                         height: 22,
                       ),
@@ -156,32 +158,68 @@ class ResturantDetailss extends StatelessWidget {
                           ),
                         ],
                       ),
-                      // const SizedBox(
-                      //   height: 12,
-                      // ),
+
                       SizedBox(
-                        height: 350,
+                        height: MediaQuery.of(context).size.height,
                         child: GridView.builder(
                             physics: const NeverScrollableScrollPhysics(),
                             itemCount: 6,
                             gridDelegate:
                                 const SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 2,
-                              mainAxisExtent: 100,
+                              mainAxisExtent: 200,
                             ),
                             itemBuilder: (context, i) {
                               return Padding(
                                 padding: const EdgeInsets.all(4.0),
                                 child: Container(
+                                  margin: EdgeInsets.all(8),
+
+                                  //width: 100,
                                   decoration: BoxDecoration(
                                       border: Border.all(
                                           color: AppColors.greyBorder,
                                           width: 1.5),
                                       borderRadius: BorderRadius.circular(8),
                                       color: AppColors.whiteMain),
-                                  child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Container()),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      // ClipRRect(
+
+                                      //   borderRadius: BorderRadius.circular(8),
+                                      //   clipBehavior:
+                                      //       Clip.antiAliasWithSaveLayer,
+                                      //   child: const Image(
+
+                                      //     fit: BoxFit.fitWidth,
+                                      //     image: const AssetImage(
+                                      //         'assets/images/food.jpg'),
+                                      //   ),
+                                      // ),
+
+                                      Container(
+                                          height: 100,
+                                          width: double.infinity,
+                                          decoration: const BoxDecoration(
+                                            color: Colors.red,
+                                            borderRadius: BorderRadius.vertical(
+                                                top: Radius.circular(8)),
+                                          ),
+                                          child: const Image(
+                                            fit: BoxFit.fill,
+                                            image: AssetImage(
+                                                'assets/images/food.jpg'),
+                                          )),
+
+                                      Text(
+                                        'اسم الاكلة ',
+                                        style: BodyTextStyle,
+                                        textAlign: TextAlign.start,
+                                      )
+                                    ],
+                                  ),
                                 ),
                               );
                             }),
