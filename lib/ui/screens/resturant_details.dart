@@ -1,24 +1,71 @@
-// ignore_for_file: unnecessary_const
 import 'package:flutter/material.dart';
 import 'package:rrs_app/utils/constants.dart';
 
-class ResturantDetailss extends StatelessWidget {
+import 'food_menue_more.dart';
+
+class ResturantDetailss extends StatefulWidget {
   const ResturantDetailss({Key? key}) : super(key: key);
+
+  @override
+  State<ResturantDetailss> createState() => _ResturantDetailssState();
+}
+
+class _ResturantDetailssState extends State<ResturantDetailss> {
+  ScrollController controller = ScrollController();
+  bool isFavorited = false;
+  void isToggeled() {
+    setState(() {
+      isFavorited = !isFavorited;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        appBar: AppBar(
+          leading: GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: const Icon(Icons.arrow_back)),
+          actions: [
+            Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: IconButton(
+                  onPressed: isToggeled,
+                  icon: (isFavorited
+                      ? const Icon(Icons.favorite)
+                      : const Icon(Icons.favorite_border)),
+                )),
+            // Padding(
+            //   padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            //   child: GestureDetector(
+            //       onTap: () {
+            //         Navigator.push(
+            //             context,
+            //             MaterialPageRoute(
+            //                 builder: ((context) => const FavScreen())));
+            //       },
+            //       child: Icon(Icons.favorite)),
+            // ),
+          ],
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
+        ),
+        extendBodyBehindAppBar: true,
         body: Stack(
           children: [
+            /// Image of resturant
             const SizedBox(
               height: 300,
               width: double.infinity,
-              child: const Image(
+              child: Image(
                 fit: BoxFit.fill,
                 image: AssetImage('assets/images/res1.jpg'),
               ),
             ),
+
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
@@ -30,10 +77,12 @@ class ResturantDetailss extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: SingleChildScrollView(
-                    child: Column(children: [
+                    controller: controller,
+                    child: Column(mainAxisSize: MainAxisSize.min, children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: const [
+                          /// Name of rsturant
                           Text(
                             '3.6',
                             style: HeadTextStyle,
@@ -44,10 +93,14 @@ class ResturantDetailss extends StatelessWidget {
                           ),
                         ],
                       ),
+                      const SizedBox(height: 20),
+
+                      /// sections of raiting
                       SizedBox(
-                        height: 125,
+                        height: 105,
                         child: GridView.builder(
-                            itemCount: 6,
+                            padding: EdgeInsets.zero,
+                            itemCount: resturantDetails.length,
                             physics: const NeverScrollableScrollPhysics(),
                             gridDelegate:
                                 const SliverGridDelegateWithFixedCrossAxisCount(
@@ -69,18 +122,18 @@ class ResturantDetailss extends StatelessWidget {
                                     child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
-                                        children: const [
-                                          Text('الاكل', style: BodyTextStyle),
-                                          Text('3/10', style: BodyTextStyle),
+                                        children: [
+                                          Text(resturantDetails[i],
+                                              style: BodyTextStyle),
+                                          Text(raiting[i],
+                                              style: BodyTextStyle),
                                         ]),
                                   ),
                                 ),
                               );
                             }),
                       ),
-                      const SizedBox(
-                        height: 12,
-                      ),
+
                       Container(
                         height: 50,
                         width: double.infinity,
@@ -93,29 +146,21 @@ class ResturantDetailss extends StatelessWidget {
                           padding: const EdgeInsets.all(12.0),
                           child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: const [
+                              children: [
                                 Text('موقف سيارات', style: BodyTextStyle),
                                 Text('العاب للاطفال', style: BodyTextStyle),
-                                Text(
-                                  'ميزة خرى',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: 'Tajawal',
-                                    color: Colors.black,
-                                  ),
-                                ),
+                                Text('ميزة خرى', style: BodyTextStyle),
                               ]),
                         ),
                       ),
-                      const SizedBox(
+                      SizedBox(
                         height: 12,
                       ),
-                      const Divider(
+                      Divider(
                         thickness: 2,
                         color: AppColors.greyBorder,
                       ),
-                      const SizedBox(
+                      SizedBox(
                         height: 12,
                       ),
                       Container(
@@ -126,7 +171,7 @@ class ResturantDetailss extends StatelessWidget {
                                   color: AppColors.greyBorder, width: 1.5),
                               borderRadius: BorderRadius.circular(8),
                               color: AppColors.whiteMain),
-                          child: const Padding(
+                          child: Padding(
                               padding: EdgeInsets.all(12.0),
                               child: Text(
                                 'يقع المطعم في اليرموك اربع شوارع يحتوي على باركنك مجاني وكدز ايريا واراكيل طيبة وبعدددد مادري شنو ',
@@ -136,20 +181,28 @@ class ResturantDetailss extends StatelessWidget {
 
                       //////////---------- menue ---------------
 
-                      const SizedBox(
+                      SizedBox(
                         height: 22,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: const [
-                          Text(
-                            ' المزيد',
-                            textAlign: TextAlign.start,
-                            style: TextStyle(
-                                color: Color.fromARGB(255, 61, 152, 227),
-                                fontFamily: 'Tajawal',
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold),
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: ((context) => FoodMenue())));
+                            },
+                            child: Text(
+                              ' المزيد',
+                              textAlign: TextAlign.start,
+                              style: TextStyle(
+                                  color: Color.fromARGB(255, 61, 152, 227),
+                                  fontFamily: 'Tajawal',
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold),
+                            ),
                           ),
                           Text(
                             'قائمة الطعام ',
@@ -162,64 +215,64 @@ class ResturantDetailss extends StatelessWidget {
                       SizedBox(
                         height: MediaQuery.of(context).size.height,
                         child: GridView.builder(
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemCount: 6,
+                            padding: EdgeInsets.zero,
+                            physics: NeverScrollableScrollPhysics(),
+                            itemCount: images.length,
                             gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
+                                SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 2,
                               mainAxisExtent: 200,
                             ),
                             itemBuilder: (context, i) {
-                              return Padding(
-                                padding: const EdgeInsets.all(4.0),
-                                child: Container(
-                                  margin: EdgeInsets.all(8),
-
-                                  //width: 100,
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                          color: AppColors.greyBorder,
-                                          width: 1.5),
-                                      borderRadius: BorderRadius.circular(8),
-                                      color: AppColors.whiteMain),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      // ClipRRect(
-
-                                      //   borderRadius: BorderRadius.circular(8),
-                                      //   clipBehavior:
-                                      //       Clip.antiAliasWithSaveLayer,
-                                      //   child: const Image(
-
-                                      //     fit: BoxFit.fitWidth,
-                                      //     image: const AssetImage(
-                                      //         'assets/images/food.jpg'),
-                                      //   ),
-                                      // ),
-
-                                      Container(
-                                          height: 100,
-                                          width: double.infinity,
-                                          decoration: const BoxDecoration(
-                                            color: Colors.red,
-                                            borderRadius: BorderRadius.vertical(
-                                                top: Radius.circular(8)),
-                                          ),
-                                          child: const Image(
-                                            fit: BoxFit.fill,
-                                            image: AssetImage(
-                                                'assets/images/food.jpg'),
-                                          )),
-
-                                      Text(
+                              return Container(
+                                margin: EdgeInsets.all(8),
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: AppColors.greyBorder,
+                                        width: 1.5),
+                                    borderRadius: BorderRadius.circular(8),
+                                    color: AppColors.whiteMain),
+                                child: Column(
+                                  // mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Container(
+                                      height: 100,
+                                      width: double.infinity,
+                                      decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                            fit: BoxFit.cover,
+                                            image: NetworkImage(images[i])),
+                                        color: Colors.grey,
+                                        borderRadius:
+                                            const BorderRadius.vertical(
+                                                top: Radius.circular(7)),
+                                      ),
+                                    ),
+                                    const Padding(
+                                      padding: EdgeInsets.all(8.0),
+                                      child: Text(
                                         'اسم الاكلة ',
                                         style: BodyTextStyle,
                                         textAlign: TextAlign.start,
-                                      )
-                                    ],
-                                  ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 100,
+                                      height: 30,
+                                      child: ListView.builder(
+                                        scrollDirection: Axis.horizontal,
+                                        itemCount: 5,
+                                        itemBuilder: (context, int) {
+                                          return const Icon(
+                                            Icons.star,
+                                            color: Colors.yellow,
+                                            size: 18,
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               );
                             }),
@@ -236,15 +289,29 @@ class ResturantDetailss extends StatelessWidget {
   }
 }
 
-class RatingList {
-  const RatingList({required this.rating, required this.ratingvalue});
-  final String rating;
-  final double ratingvalue;
-}
+List images = [
+  'https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8N3x8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+  'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+  'https://images.pexels.com/photos/327158/pexels-photo-327158.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+  'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Nnx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+  'https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8N3x8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+  'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Nnx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+  'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Nnx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+];
 
-const List<RatingList> choices = const <RatingList>[
-  RatingList(rating: 'Home', ratingvalue: 4.9),
-  const RatingList(rating: 'Contact', ratingvalue: 4.9),
-  const RatingList(rating: 'Map', ratingvalue: 4.9),
-  const RatingList(rating: 'Phone', ratingvalue: 4.9),
+List<String> resturantDetails = [
+  'الاكل',
+  'السرعة',
+  'المكان',
+  'النظافة',
+  'الخدمة',
+  'الاسعار',
+];
+List<String> raiting = [
+  '4.9',
+  '4.0',
+  '3.9',
+  '4.5',
+  '3.8',
+  '3.1',
 ];
