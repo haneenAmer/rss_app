@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Timer(Duration(seconds: 5), timerofsplash);
+    Timer(const Duration(seconds: 5), timerofsplash);
   }
 
   ///creat class to move to the home page
@@ -33,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return MaterialApp(
       home: Scaffold(
         body: AnimatedSplashScreen(
-          backgroundColor: Color(0xff1B1B1D),
+          backgroundColor: const Color(0xff1B1B1D),
           splash: 'images/MiCinema-logo.png',
           nextScreen: NavBar(),
           splashTransition: SplashTransition.scaleTransition,
