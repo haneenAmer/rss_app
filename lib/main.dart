@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rrs_app/ui/screens/favourite_screen.dart';
 import 'package:rrs_app/ui/screens/home_screen.dart';
 import 'package:rrs_app/ui/screens/navigation_bar.dart';
 import 'package:rrs_app/ui/screens/onboarding_screen.dart';
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       // ignore: prefer_const_constructors
-      home: ResturantDetailss(),
+      home: SigninScreen(),
     );
   }
 }
