@@ -14,10 +14,10 @@ class NavBar extends StatefulWidget {
 class _NavBarState extends State<NavBar> {
   int _selectedIndex = 0;
   final List<Widget> _widgetOptions = <Widget>[
-    const HomeScreen(),
-    const SeachScreen(),
-    const FavScreen(),
-    const MoreScreen()
+    HomeScreen(),
+    SeachScreen(),
+    FavScreen(),
+    MoreScreen()
   ];
 
   @override
@@ -40,8 +40,7 @@ class _NavBarState extends State<NavBar> {
           ),
           child: SafeArea(
             child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
+              padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
               child: GNav(
                 // rippleColor: Color(0xff18D3AB)!,
                 hoverColor: AppColors.greenMain,
