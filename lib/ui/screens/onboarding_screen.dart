@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:rrs_app/ui/screens/signin_screen.dart';
 import 'package:rrs_app/utils/constants.dart';
 
 import 'navigation_bar.dart';
 
 class OnBoarding extends StatelessWidget {
-  const OnBoarding({Key? key}) : super(key: key);
+  OnBoarding({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +40,7 @@ class OnBoarding extends StatelessWidget {
                 ),
                 VerticalSpace(12),
                 Text(
-                  'ستجد المطعم المناسب خلال دقايق ',
+                  'ستجد المطعم المناسب خلال دقائق ',
                   style: TextStyle(
                       fontFamily: 'Tajawal', fontSize: 18, color: Colors.white),
                 ),
@@ -62,7 +61,7 @@ class OnBoarding extends StatelessWidget {
                         color: AppColors.greenMain,
                       ),
                       child: Text('ابدأ التصفح',
-                          style: const TextStyle(
+                          style: TextStyle(
                               fontFamily: 'Tajawal',
                               color: Colors.black,
                               fontSize: 20,
