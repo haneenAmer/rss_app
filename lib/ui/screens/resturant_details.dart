@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rrs_app/utils/constants.dart';
 
+import '../widgets/widgets.dart';
 import 'food_menue_more.dart';
 
 class ResturantDetailss extends StatefulWidget {
@@ -76,208 +77,214 @@ class _ResturantDetailssState extends State<ResturantDetailss> {
                     borderRadius: BorderRadius.circular(12)),
                 child: Padding(
                   padding: const EdgeInsets.all(12.0),
-                  child: SingleChildScrollView(
-                    controller: controller,
-                    child: Column(mainAxisSize: MainAxisSize.min, children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: const [
-                          /// Name of rsturant
-                          Text(
-                            '3.6',
-                            style: HeadTextStyle,
-                          ),
-                          Text(
-                            'اسم المطعم ',
-                            style: HeadTextStyle,
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 20),
-
-                      /// sections of raiting
-                      SizedBox(
-                        height: 105,
-                        child: GridView.builder(
-                            padding: EdgeInsets.zero,
-                            itemCount: resturantDetails.length,
-                            physics: const NeverScrollableScrollPhysics(),
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 3,
-                              mainAxisExtent: 50,
-                            ),
-                            itemBuilder: (context, i) {
-                              return Padding(
-                                padding: const EdgeInsets.all(4.0),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                          color: AppColors.greyBorder,
-                                          width: 1.5),
-                                      borderRadius: BorderRadius.circular(8),
-                                      color: AppColors.whiteMain),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(resturantDetails[i],
-                                              style: BodyTextStyle),
-                                          Text(raiting[i],
-                                              style: BodyTextStyle),
-                                        ]),
-                                  ),
-                                ),
-                              );
-                            }),
-                      ),
-
-                      Container(
-                        height: 50,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                                color: AppColors.greyBorder, width: 1.5),
-                            borderRadius: BorderRadius.circular(8),
-                            color: AppColors.whiteMain),
-                        child: Padding(
-                          padding: const EdgeInsets.all(12.0),
-                          child: Row(
+                  child: ScrollConfiguration(
+                    behavior: MyBehavior(),
+                    child: SingleChildScrollView(
+                      controller: controller,
+                      child: Column(
+                          //mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text('موقف سيارات', style: BodyTextStyle),
-                                Text('العاب للاطفال', style: BodyTextStyle),
-                                Text('ميزة خرى', style: BodyTextStyle),
-                              ]),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 12,
-                      ),
-                      Divider(
-                        thickness: 2,
-                        color: AppColors.greyBorder,
-                      ),
-                      SizedBox(
-                        height: 12,
-                      ),
-                      Container(
-                          height: 150,
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                  color: AppColors.greyBorder, width: 1.5),
-                              borderRadius: BorderRadius.circular(8),
-                              color: AppColors.whiteMain),
-                          child: Padding(
-                              padding: EdgeInsets.all(12.0),
-                              child: Text(
-                                'يقع المطعم في اليرموك اربع شوارع يحتوي على باركنك مجاني وكدز ايريا واراكيل طيبة وبعدددد مادري شنو ',
-                                style: BodyTextStyle,
-                                textAlign: TextAlign.right,
-                              ))),
-
-                      //////////---------- menue ---------------
-
-                      SizedBox(
-                        height: 22,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: ((context) => FoodMenue())));
-                            },
-                            child: Text(
-                              ' المزيد',
-                              textAlign: TextAlign.start,
-                              style: TextStyle(
-                                  color: Color.fromARGB(255, 61, 152, 227),
-                                  fontFamily: 'Tajawal',
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold),
+                              children: const [
+                                /// Name of rsturant
+                                Text(
+                                  '3.6',
+                                  style: HeadTextStyle,
+                                ),
+                                Text(
+                                  'اسم المطعم ',
+                                  style: HeadTextStyle,
+                                ),
+                              ],
                             ),
-                          ),
-                          Text(
-                            'قائمة الطعام ',
-                            textAlign: TextAlign.start,
-                            style: HeadTextStyle,
-                          ),
-                        ],
-                      ),
+                            const SizedBox(height: 20),
 
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height,
-                        child: GridView.builder(
-                            padding: EdgeInsets.zero,
-                            physics: NeverScrollableScrollPhysics(),
-                            itemCount: images.length,
-                            gridDelegate:
-                                SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                              mainAxisExtent: 200,
+                            /// sections of raiting
+                            SizedBox(
+                              height: 105,
+                              child: GridView.builder(
+                                  padding: EdgeInsets.zero,
+                                  itemCount: resturantDetails.length,
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  gridDelegate:
+                                      const SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 3,
+                                    mainAxisExtent: 50,
+                                  ),
+                                  itemBuilder: (context, i) {
+                                    return Padding(
+                                      padding: const EdgeInsets.all(4.0),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                            border: Border.all(
+                                                color: AppColors.greyBorder,
+                                                width: 1.5),
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                            color: AppColors.whiteMain),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(resturantDetails[i],
+                                                    style: BodyTextStyle),
+                                                Text(raiting[i],
+                                                    style: BodyTextStyle),
+                                              ]),
+                                        ),
+                                      ),
+                                    );
+                                  }),
                             ),
-                            itemBuilder: (context, i) {
-                              return Container(
-                                margin: EdgeInsets.all(8),
+
+                            Container(
+                              height: 50,
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color: AppColors.greyBorder, width: 1.5),
+                                  borderRadius: BorderRadius.circular(8),
+                                  color: AppColors.whiteMain),
+                              child: Padding(
+                                padding: const EdgeInsets.all(12.0),
+                                child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: const [
+                                      Text('موقف سيارات', style: BodyTextStyle),
+                                      Text('العاب للاطفال',
+                                          style: BodyTextStyle),
+                                      Text('ميزة خرى', style: BodyTextStyle),
+                                    ]),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 12,
+                            ),
+                            const Divider(
+                              thickness: 2,
+                              color: AppColors.greyBorder,
+                            ),
+                            const SizedBox(
+                              height: 12,
+                            ),
+                            Container(
+                                height: 150,
+                                width: double.infinity,
                                 decoration: BoxDecoration(
                                     border: Border.all(
                                         color: AppColors.greyBorder,
                                         width: 1.5),
                                     borderRadius: BorderRadius.circular(8),
                                     color: AppColors.whiteMain),
-                                child: Column(
-                                  // mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    Container(
-                                      height: 100,
-                                      width: double.infinity,
-                                      decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                            fit: BoxFit.cover,
-                                            image: NetworkImage(images[i])),
-                                        color: Colors.grey,
-                                        borderRadius:
-                                            const BorderRadius.vertical(
-                                                top: Radius.circular(7)),
-                                      ),
-                                    ),
-                                    const Padding(
-                                      padding: EdgeInsets.all(8.0),
-                                      child: Text(
-                                        'اسم الاكلة ',
-                                        style: BodyTextStyle,
-                                        textAlign: TextAlign.start,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 100,
-                                      height: 30,
-                                      child: ListView.builder(
-                                        scrollDirection: Axis.horizontal,
-                                        itemCount: 5,
-                                        itemBuilder: (context, int) {
-                                          return const Icon(
-                                            Icons.star,
-                                            color: Colors.yellow,
-                                            size: 18,
-                                          );
-                                        },
-                                      ),
-                                    ),
-                                  ],
+                                child: const Padding(
+                                    padding: EdgeInsets.all(12.0),
+                                    child: Text(
+                                      'يقع المطعم في اليرموك اربع شوارع يحتوي على باركنك مجاني وكدز ايريا واراكيل طيبة وبعدددد مادري شنو ',
+                                      style: BodyTextStyle,
+                                      textAlign: TextAlign.right,
+                                    ))),
+
+                            //////////---------- menue ---------------
+
+                            const SizedBox(
+                              height: 22,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: ((context) =>
+                                                FoodMenue())));
+                                  },
+                                  child: const Text(
+                                    ' المزيد',
+                                    textAlign: TextAlign.start,
+                                    style: TextStyle(
+                                        color:
+                                            Color.fromARGB(255, 61, 152, 227),
+                                        fontFamily: 'Tajawal',
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold),
+                                  ),
                                 ),
-                              );
-                            }),
-                      ),
-                    ]),
+                                const Text(
+                                  'قائمة الطعام ',
+                                  textAlign: TextAlign.start,
+                                  style: HeadTextStyle,
+                                ),
+                              ],
+                            ),
+                            GridView.builder(
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                padding: EdgeInsets.zero,
+                                itemCount: images.length,
+                                gridDelegate:
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2,
+                                  mainAxisExtent: 208,
+                                ),
+                                itemBuilder: (context, i) {
+                                  return Container(
+                                    margin: const EdgeInsets.all(4),
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8),
+                                        color: AppColors.whiteMain),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: [
+                                        Container(
+                                          height: 100,
+                                          width: double.infinity,
+                                          decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                                fit: BoxFit.cover,
+                                                image: NetworkImage(images[i])),
+                                            color: Colors.grey,
+                                            borderRadius:
+                                                const BorderRadius.vertical(
+                                                    top: Radius.circular(7)),
+                                          ),
+                                        ),
+                                        const Padding(
+                                          padding: EdgeInsets.all(8.0),
+                                          child: Text(
+                                            'اسم الاكلة ',
+                                            style: BodyTextStyle,
+                                            textAlign: TextAlign.start,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 100,
+                                          height: 30,
+                                          child: ListView.builder(
+                                            scrollDirection: Axis.horizontal,
+                                            itemCount: 5,
+                                            itemBuilder: (context, int) {
+                                              return const Icon(
+                                                Icons.star,
+                                                color: Colors.yellow,
+                                                size: 18,
+                                              );
+                                            },
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                }),
+                          ]),
+                    ),
                   ),
                 ),
               ),
@@ -297,6 +304,12 @@ List images = [
   'https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8N3x8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
   'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Nnx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
   'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Nnx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+  'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Nnx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+  'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Nnx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+  'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+  'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Nnx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+  'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Nnx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+  'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
 ];
 
 List<String> resturantDetails = [

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rrs_app/ui/widgets/widgets.dart';
 
 import '../../utils/constants.dart';
 
@@ -16,11 +17,11 @@ class _FavScreenState extends State<FavScreen> {
       home: Scaffold(
           backgroundColor: AppColors.greyBackground,
           body: Padding(
-            padding: EdgeInsets.only(top: 40.0),
+            padding: const EdgeInsets.only(top: 40.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Text(
+                const Text(
                   ' قائمة المفضلة ',
                   style: HeadTextStyle,
                 ),
@@ -28,52 +29,59 @@ class _FavScreenState extends State<FavScreen> {
                 Expanded(
                   flex: 2,
                   child: SizedBox(
-                      height: MediaQuery.of(context).size.height,
+                      //height: MediaQuery.of(context).size.height,
                       width: double.infinity,
-                      child: ListView.builder(
-                          padding: EdgeInsets.all(8),
-                          itemCount: images.length,
-                          shrinkWrap: true,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Card(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                mainAxisSize: MainAxisSize.min,
-                                children: <Widget>[
-                                  Container(
-                                    // margin: const EdgeInsets.all(5),
-                                    height: 190,
-                                    width: MediaQuery.of(context).size.width,
-                                    decoration: BoxDecoration(
-                                      color: Color.fromARGB(255, 202, 200, 200),
-                                      borderRadius: BorderRadius.circular(8),
-                                      image: DecorationImage(
-                                        image: NetworkImage(images[index]),
-                                        fit: BoxFit.cover,
+                      child: ScrollConfiguration(
+                        behavior: MyBehavior(),
+                        child: ListView.builder(
+                            physics: const NeverScrollableScrollPhysics(),
+                            padding: EdgeInsets.all(8),
+                            itemCount: images.length,
+                            shrinkWrap: true,
+                            itemBuilder: (BuildContext context, int index) {
+                              return Card(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: <Widget>[
+                                    Container(
+                                      // margin: const EdgeInsets.all(5),
+                                      height: 190,
+                                      width: MediaQuery.of(context).size.width,
+                                      decoration: BoxDecoration(
+                                        color: const Color.fromARGB(
+                                            255, 202, 200, 200),
+                                        borderRadius:
+                                            const BorderRadius.vertical(
+                                                top: Radius.circular(8)),
+                                        image: DecorationImage(
+                                          image: NetworkImage(images[index]),
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  VerticalSpace(12),
-                                  Padding(
-                                    padding: EdgeInsets.only(right: 12.0),
-                                    child: Text(
-                                      nameOfResturantsList[index],
-                                      style: HeadTextStyle,
+                                    VerticalSpace(12),
+                                    Padding(
+                                      padding: EdgeInsets.only(right: 12.0),
+                                      child: Text(
+                                        nameOfResturantsList[index],
+                                        style: HeadTextStyle,
+                                      ),
                                     ),
-                                  ),
-                                  VerticalSpace(22),
-                                  Padding(
-                                    padding: EdgeInsets.only(
-                                        right: 12.0, bottom: 20),
-                                    child: Icon(
-                                      Icons.star,
-                                      color: Colors.yellow,
+                                    VerticalSpace(22),
+                                    const Padding(
+                                      padding: EdgeInsets.only(
+                                          right: 12.0, bottom: 20),
+                                      child: Icon(
+                                        Icons.star,
+                                        color: Colors.yellow,
+                                      ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            );
-                          })),
+                                  ],
+                                ),
+                              );
+                            }),
+                      )),
                 ),
               ],
             ),

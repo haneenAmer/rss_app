@@ -1,8 +1,7 @@
-import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 import 'package:rrs_app/ui/screens/profile.dart';
 import 'package:rrs_app/ui/screens/resturant_details.dart';
+import 'package:rrs_app/ui/widgets/widgets.dart';
 import 'package:rrs_app/utils/constants.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -21,8 +20,8 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         actions: const [
           Padding(
-            padding: EdgeInsets.only(top: 18.0),
-            child: Text('مستكشف المطاعم', style: HeadTextStyle),
+            padding: EdgeInsets.all(18.0),
+            child: Text('تقييم المطاعم', style: HeadTextStyle),
           ),
         ],
         leading: GestureDetector(
@@ -32,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
               MaterialPageRoute(builder: (context) => Profile()),
             );
           },
-          child: Icon(
+          child: const Icon(
             Icons.person,
             color: AppColors.blackMain,
             size: 30.0,
@@ -42,64 +41,85 @@ class _HomeScreenState extends State<HomeScreen> {
         elevation: 0,
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 8.0),
-        child: ListView(scrollDirection: Axis.vertical, children: [
-          Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
-            Container(
-              width: double.infinity,
-              height: 200,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/images/ads.png'),
-                  fit: BoxFit.fill,
-                ),
-                color: Color.fromARGB(255, 202, 200, 200),
-                borderRadius: BorderRadius.circular(12),
-              ),
-            ),
-            SizedBox(
-                height: 150,
-                width: double.infinity,
-                child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    padding: EdgeInsets.only(top: 8),
-                    itemCount: images.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Column(
-                        children: [
-                          Container(
-                            margin: EdgeInsets.all(5),
-                            height: 100,
-                            width: 100,
-                            decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 202, 200, 200),
-                              borderRadius: BorderRadius.circular(4),
-                              image: DecorationImage(
-                                image: NetworkImage(images[index]),
-                                fit: BoxFit.fill,
-                              ),
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        child: ScrollConfiguration(
+          behavior: MyBehavior(),
+          child: ListView(scrollDirection: Axis.vertical, children: [
+            Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
+              SizedBox(
+                  height: 180,
+                  width: double.infinity,
+                  child: ScrollConfiguration(
+                    behavior: MyBehavior(),
+                    child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        padding: const EdgeInsets.only(top: 8),
+                        itemCount: Ads.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Padding(
+                            padding: const EdgeInsets.all(3),
+                            child: Container(
+                              height: 230,
+                              width: 360,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  color:
+                                      const Color.fromARGB(255, 202, 200, 200),
+                                  image: DecorationImage(
+                                      fit: BoxFit.fill,
+                                      image: NetworkImage(Ads[index]))),
                             ),
-                          ),
-                          Text(
-                            'مندي',
-                            style: TextStyle(fontFamily: 'Tajawal'),
-                          ),
-                        ],
-                      );
-                    })),
-            SizedBox(
-              height: 12,
-            ),
-            Text(
-              'المطاعم الاكثر زيارة',
-              style: HeadTextStyle,
-            ),
-            SizedBox(
-              height: 12,
-            ),
-            containerList(images.length, images, nameOfResturantsList),
+                          );
+                        }),
+                  )),
+              SizedBox(
+                  height: 150,
+                  width: double.infinity,
+                  child: ScrollConfiguration(
+                    behavior: MyBehavior(),
+                    child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        padding: const EdgeInsets.only(top: 8),
+                        itemCount: images.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Column(
+                            children: [
+                              Container(
+                                margin: const EdgeInsets.all(5),
+                                height: 100,
+                                width: 100,
+                                decoration: BoxDecoration(
+                                  color:
+                                      const Color.fromARGB(255, 202, 200, 200),
+                                  borderRadius: BorderRadius.circular(4),
+                                  image: DecorationImage(
+                                    image: NetworkImage(images[index]),
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
+                              ),
+                              const Text(
+                                'مندي',
+                                style: TextStyle(fontFamily: 'Tajawal'),
+                              ),
+                            ],
+                          );
+                        }),
+                  )),
+              const SizedBox(
+                height: 12,
+              ),
+              const Text(
+                'المطاعم الاكثر زيارة',
+                style: HeadTextStyle,
+              ),
+              const SizedBox(
+                height: 12,
+              ),
+              containerList(images.length, images, nameOfResturantsList),
+            ]),
           ]),
-        ]),
+        ),
       ),
     ));
   }
@@ -122,8 +142,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 190,
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 202, 200, 200),
-                    borderRadius: BorderRadius.circular(8),
+                    color: const Color.fromARGB(255, 202, 200, 200),
+                    borderRadius:
+                        const BorderRadius.vertical(top: Radius.circular(8)),
                     image: DecorationImage(
                       image: NetworkImage(images[i]),
                       fit: BoxFit.cover,
@@ -132,7 +153,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 VerticalSpace(12),
                 Padding(
-                  padding: EdgeInsets.only(right: 12.0),
+                  padding: const EdgeInsets.only(right: 12.0),
                   child: Text(
                     nameOfResturantsList[i],
                     style: HeadTextStyle,
@@ -188,3 +209,9 @@ Route createRoute() {
     },
   );
 }
+
+List<String> Ads = [
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQC4Truc01jVBFa_baSwBdMG-2oaGOZyVynQ80t3CDj_8xPw9fRy-M5NCKHr_p3buMU6Nc&usqp=CAU',
+  'https://img.freepik.com/free-vector/flat-design-fast-food-facebook-template_23-2149135961.jpg?size=626&ext=jpg&ga=GA1.1.45384623.1648037117&semt=ais',
+  'https://img.freepik.com/free-vector/flat-design-tasty-food-facebook-template_23-2149122705.jpg?size=626&ext=jpg&ga=GA1.1.45384623.1648037117&semt=ais',
+];

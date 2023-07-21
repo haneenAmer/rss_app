@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rrs_app/ui/screens/signin_screen.dart';
 import 'package:rrs_app/utils/constants.dart';
 
 import 'navigation_bar.dart';
@@ -18,6 +19,19 @@ class OnBoarding extends StatelessWidget {
                 image: AssetImage('assets/images/onboarding.png')),
           ),
           Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    colors: [
+                  Colors.grey.withOpacity(0.5),
+                  Colors.black.withOpacity(0.5),
+                ],
+                    stops: const [
+                  0.0,
+                  2.0
+                ],
+                    begin: FractionalOffset.topCenter,
+                    end: FractionalOffset.bottomCenter,
+                    tileMode: TileMode.repeated)),
             width: double.infinity,
             child: Image(
                 fit: BoxFit.fill,
@@ -44,32 +58,64 @@ class OnBoarding extends StatelessWidget {
                   style: TextStyle(
                       fontFamily: 'Tajawal', fontSize: 18, color: Colors.white),
                 ),
-                VerticalSpace(12),
-                TextButton(
+
+                //VerticalSpace(10),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextButton(
+                    style: ButtonStyle(
+                      minimumSize: MaterialStateProperty.all(Size(370, 70)),
+                      backgroundColor:
+                          MaterialStateProperty.all(AppColors.greenMain),
+                      shape: MaterialStateProperty.all(
+                        RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.0)),
+                      ),
+                      overlayColor:
+                          MaterialStateProperty.all(AppColors.greenMain),
+                    ),
                     onPressed: () {
-                      Navigator.push(
+                      Navigator.pushAndRemoveUntil(
                         context,
                         MaterialPageRoute(builder: (context) => NavBar()),
+                        (Route<dynamic> route) => false,
                       );
                     },
-                    child: Container(
-                      alignment: Alignment.center,
-                      height: 70,
-                      width: 350,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        color: AppColors.greenMain,
-                      ),
-                      child: Text('ابدأ التصفح',
-                          style: TextStyle(
-                              fontFamily: 'Tajawal',
-                              color: Colors.black,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold)),
-                    )),
+                    child: Text('ابدأ التصفح',
+                        style: TextStyle(
+                            fontFamily: 'Tajawal',
+                            color: Colors.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold)),
+                  ),
+                )
+                // TextButton(
+                //     style: const ButtonStyle(),
+                //     onPressed: () {
+                //       Navigator.pushAndRemoveUntil(
+                //         context,
+                //         MaterialPageRoute(builder: (context) => NavBar()),
+                //         (Route<dynamic> route) => false,
+                //       );
+                //     },
+                //     child: Container(
+                //       alignment: Alignment.center,
+                //       height: 70,
+                //       width: 350,
+                //       decoration: BoxDecoration(
+                //         borderRadius: BorderRadius.circular(12),
+                //         color: AppColors.greenMain,
+                //       ),
+                //       child: const Text('ابدأ التصفح',
+                //           style: TextStyle(
+                //               fontFamily: 'Tajawal',
+                //               color: Colors.black,
+                //               fontSize: 20,
+                //               fontWeight: FontWeight.bold)),
+                //     )),
               ],
             ),
-          )
+          ),
         ]),
       ),
     );
