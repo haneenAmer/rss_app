@@ -1,10 +1,12 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:rrs_app/ui/widgets/widgets.dart';
+import 'package:simple_circular_progress_bar/simple_circular_progress_bar.dart';
 
 import '../../utils/constants.dart';
 
 class FavScreen extends StatefulWidget {
-  FavScreen({Key? key}) : super(key: key);
+  const FavScreen({Key? key}) : super(key: key);
 
   @override
   State<FavScreen> createState() => _FavScreenState();
@@ -15,17 +17,17 @@ class _FavScreenState extends State<FavScreen> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+          appBar: AppBar(backgroundColor: AppColors.whiteMain,
+              //elevation: 0,
+              actions: [
+                HeaderComponentText('قائمة المفضلة'),
+              ]),
           backgroundColor: AppColors.greyBackground,
           body: Padding(
-            padding: const EdgeInsets.only(top: 40.0),
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                const Text(
-                  ' قائمة المفضلة ',
-                  style: HeadTextStyle,
-                ),
-                VerticalSpace(12),
                 Expanded(
                   flex: 2,
                   child: SizedBox(
@@ -34,8 +36,7 @@ class _FavScreenState extends State<FavScreen> {
                       child: ScrollConfiguration(
                         behavior: MyBehavior(),
                         child: ListView.builder(
-                            physics: const NeverScrollableScrollPhysics(),
-                            padding: EdgeInsets.all(8),
+                            padding: const EdgeInsets.symmetric(horizontal: 8),
                             itemCount: images.length,
                             shrinkWrap: true,
                             itemBuilder: (BuildContext context, int index) {
@@ -48,21 +49,19 @@ class _FavScreenState extends State<FavScreen> {
                                       // margin: const EdgeInsets.all(5),
                                       height: 190,
                                       width: MediaQuery.of(context).size.width,
-                                      decoration: BoxDecoration(
-                                        color: const Color.fromARGB(
-                                            255, 202, 200, 200),
-                                        borderRadius:
-                                            const BorderRadius.vertical(
-                                                top: Radius.circular(8)),
-                                        image: DecorationImage(
-                                          image: NetworkImage(images[index]),
-                                          fit: BoxFit.cover,
-                                        ),
+                                      decoration: const BoxDecoration(
+                                        color:
+                                            Color.fromARGB(255, 202, 200, 200),
+                                        borderRadius: BorderRadius.vertical(
+                                            top: Radius.circular(8)),
                                       ),
+                                      child: MyCashedNetworkImage(
+                                          image: images[index]),
                                     ),
                                     VerticalSpace(12),
                                     Padding(
-                                      padding: EdgeInsets.only(right: 12.0),
+                                      padding:
+                                          const EdgeInsets.only(right: 12.0),
                                       child: Text(
                                         nameOfResturantsList[index],
                                         style: HeadTextStyle,

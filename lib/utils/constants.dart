@@ -10,13 +10,13 @@ class AppColors {
 
 // ignore: constant_identifier_names
 const TextStyle HeadTextStyle = TextStyle(
-  fontSize: 20,
+  fontSize: 18,
   fontWeight: FontWeight.bold,
   fontFamily: 'Tajawal',
   color: Colors.black,
 );
 const TextStyle HeadTextStyleWhite = TextStyle(
-  fontSize: 20,
+  fontSize: 18,
   fontWeight: FontWeight.bold,
   fontFamily: 'Tajawal',
   color: Colors.white,
@@ -28,6 +28,7 @@ const TextStyle BodyTextStyle = TextStyle(
   //fontWeight: FontWeight.bold,
   fontFamily: 'Tajawal',
   height: 1.5,
+  fontWeight: FontWeight.w600,
   color: Colors.black,
 );
 

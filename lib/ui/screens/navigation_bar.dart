@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:rrs_app/ui/screens/search_page.dart';
+import 'package:rrs_app/ui/screens/search_screen.dart';
 import 'package:rrs_app/utils/constants.dart';
 import 'favourite_screen.dart';
 import 'home_screen.dart';

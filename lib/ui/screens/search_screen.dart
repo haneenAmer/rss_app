@@ -85,22 +85,10 @@ class MyGridView extends StatelessWidget {
                   width: 200,
                   margin: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(25),
                     color: const Color.fromARGB(255, 192, 184, 184),
                   ),
-                  child: CachedNetworkImage(
-                    fit: BoxFit.cover,
-                    imageUrl: images[i],
-                    placeholder: (context, url) =>
-                        const SimpleCircularProgressBar(
-                      progressStrokeWidth: 10,
-                      backStrokeWidth: 10,
-                      size: 30,
-                      progressColors: [AppColors.greenMain],
-                    ),
-                    errorWidget: (context, url, error) =>
-                        const Icon(Icons.error),
-                  ),
+                  child: MyCashedNetworkImage(image: images[i]),
                 ),
                 Container(
                   height: 200,

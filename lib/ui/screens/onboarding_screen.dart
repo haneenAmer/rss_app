@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:rrs_app/ui/screens/signin_screen.dart';
 import 'package:rrs_app/utils/constants.dart';
 
 import 'navigation_bar.dart';
@@ -14,8 +13,8 @@ class OnBoarding extends StatelessWidget {
         body: Stack(children: [
           Container(
             width: double.infinity,
-            child: Image(
-                fit: BoxFit.fill,
+            child: const Image(
+                fit: BoxFit.cover,
                 image: AssetImage('assets/images/onboarding.png')),
           ),
           Container(
@@ -33,7 +32,7 @@ class OnBoarding extends StatelessWidget {
                     end: FractionalOffset.bottomCenter,
                     tileMode: TileMode.repeated)),
             width: double.infinity,
-            child: Image(
+            child: const Image(
                 fit: BoxFit.fill,
                 image: AssetImage('assets/images/linearlayer.png')),
           ),
@@ -53,7 +52,7 @@ class OnBoarding extends StatelessWidget {
                       color: Colors.white),
                 ),
                 VerticalSpace(12),
-                Text(
+                const Text(
                   'ستجد المطعم المناسب خلال دقائق ',
                   style: TextStyle(
                       fontFamily: 'Tajawal', fontSize: 18, color: Colors.white),
@@ -64,12 +63,12 @@ class OnBoarding extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: TextButton(
                     style: ButtonStyle(
-                      minimumSize: MaterialStateProperty.all(Size(370, 70)),
+                      minimumSize: MaterialStateProperty.all(Size(370, 60)),
                       backgroundColor:
                           MaterialStateProperty.all(AppColors.greenMain),
                       shape: MaterialStateProperty.all(
                         RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0)),
+                            borderRadius: BorderRadius.circular(40.0)),
                       ),
                       overlayColor:
                           MaterialStateProperty.all(AppColors.greenMain),
@@ -81,7 +80,7 @@ class OnBoarding extends StatelessWidget {
                         (Route<dynamic> route) => false,
                       );
                     },
-                    child: Text('ابدأ التصفح',
+                    child: const Text('ابدأ التصفح',
                         style: TextStyle(
                             fontFamily: 'Tajawal',
                             color: Colors.black,
