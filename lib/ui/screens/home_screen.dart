@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:rrs_app/ui/screens/profile.dart';
 import 'package:rrs_app/ui/screens/resturant_details_screen.dart';
 import 'package:rrs_app/ui/widgets/widgets.dart';
