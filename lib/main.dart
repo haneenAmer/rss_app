@@ -21,15 +21,16 @@ class MyApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final name = ref.watch(nameProvider);
     return MaterialApp(
-      theme: ThemeData(fontFamily: 'Tajawal'),
-      debugShowCheckedModeBanner: false,
-      home: Consumer(
-        builder: (context, ref, child) {
-          final name = ref.watch(nameProvider);
-          return (Text('haneen'));
-        },
-        //child: const SigninScreen()
-      ),
-    );
+        theme: ThemeData(fontFamily: 'Tajawal'),
+        debugShowCheckedModeBanner: false,
+        home: SigninScreen()
+        // Consumer(
+        //   builder: (context, ref, child) {
+        //     final name = ref.watch(nameProvider);
+        //     ///return (Text('haneen'));
+        //   },
+        //
+
+        );
   }
 }
