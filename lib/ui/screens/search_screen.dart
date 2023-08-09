@@ -20,7 +20,7 @@ class _SeachScreenState extends State<SeachScreen> {
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
-        child: Column(children: const [
+        child: const Column(children: [
           SeachWidget(),
 
           ////// POPULAR RESTURANT

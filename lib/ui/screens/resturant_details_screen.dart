@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:rrs_app/ui/screens/raiting_screen.dart';
 import 'package:rrs_app/utils/constants.dart';
-
+import '../../core/models/restaurant_list.dart';
+import '../../core/provider/restrunt_list_provider.dart';
 import '../widgets/widgets.dart';
 import 'food_menue_more.dart';
 
-class ResturantDetailss extends StatefulWidget {
+class ResturantDetailss extends ConsumerStatefulWidget {
   const ResturantDetailss({Key? key}) : super(key: key);
-
   @override
-  State<ResturantDetailss> createState() => _ResturantDetailssState();
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _ResturantDetailssState();
 }
 
-class _ResturantDetailssState extends State<ResturantDetailss> {
+class _ResturantDetailssState extends ConsumerState<ResturantDetailss> {
   ScrollController controller = ScrollController();
   bool isFavorited = false;
+  // late RestruntList restruntList;
   void isToggeled() {
     setState(() {
       isFavorited = !isFavorited;
@@ -22,7 +25,35 @@ class _ResturantDetailssState extends State<ResturantDetailss> {
   }
 
   @override
+  void initState() {
+    // ref.watch(restruntListFutureProvider).when(
+    //     data: (data) {
+    //       restruntList = data;
+    //     },
+    //     error: (_, __) {},
+    //     loading: () {});
+    // ref.read(restruntListStateNotifierProvider.notifier).getRestruntList();
+    super.initState();
+  }
+
+  bool isError = false;
+  bool isLoading = false;
+  @override
   Widget build(BuildContext context) {
+    RestaurantList? restruntList;
+    ref.watch(restruntListFutureProvider).when(
+      data: (data) {
+        restruntList = data;
+        isLoading = false;
+        isError = false;
+      },
+      error: (_, __) {
+        isError = true;
+      },
+      loading: () {
+        isLoading = true;
+      },
+    );
     return Scaffold(
       appBar: AppBar(
         leading: GestureDetector(
@@ -37,7 +68,7 @@ class _ResturantDetailssState extends State<ResturantDetailss> {
                 decoration: BoxDecoration(
                     color: AppColors.greyBackground.withOpacity(0.8),
                     borderRadius: BorderRadius.circular(12)),
-                child: Icon(
+                child: const Icon(
                   size: 20,
                   Icons.arrow_back_ios_new,
                   color: Colors.black,
@@ -117,17 +148,17 @@ class _ResturantDetailssState extends State<ResturantDetailss> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  Icon(
+                                  const Icon(
                                     Icons.star,
                                     color: Colors.amber,
                                     size: 20,
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 6,
                                   ),
                                   Transform.translate(
                                       offset: const Offset(0, 2),
-                                      child: Text(
+                                      child: const Text(
                                         '3.6',
                                         style: BodyTextStyle,
                                       )),
@@ -267,13 +298,14 @@ class _ResturantDetailssState extends State<ResturantDetailss> {
                               shrinkWrap: true,
                               physics: const NeverScrollableScrollPhysics(),
                               padding: EdgeInsets.zero,
-                              itemCount: images.length,
+                              itemCount: restruntList?.data.length ?? 5,
                               gridDelegate:
                                   const SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2,
                                 mainAxisExtent: 208,
                               ),
                               itemBuilder: (context, i) {
+                                print("lenttth ${restruntList?.data.length}");
                                 return Container(
                                   margin: const EdgeInsets.all(4),
                                   decoration: BoxDecoration(
@@ -285,19 +317,22 @@ class _ResturantDetailssState extends State<ResturantDetailss> {
                                       Container(
                                         height: 100,
                                         width: double.infinity,
-                                        decoration: BoxDecoration(
+                                        decoration: const BoxDecoration(
                                           color: Colors.grey,
-                                          borderRadius:
-                                              const BorderRadius.vertical(
-                                                  top: Radius.circular(7)),
+                                          borderRadius: BorderRadius.vertical(
+                                              top: Radius.circular(7)),
                                         ),
                                         child: MyCashedNetworkImage(
                                             image: images[i]),
                                       ),
-                                      const Padding(
-                                        padding: EdgeInsets.all(8.0),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
                                         child: Text(
-                                          'اسم الاكلة ',
+                                          isLoading
+                                              ? 'looooading'
+                                              : restruntList
+                                                      ?.data[i].name?.ar ??
+                                                  '',
                                           style: BodyTextStyle,
                                           textAlign: TextAlign.start,
                                         ),
