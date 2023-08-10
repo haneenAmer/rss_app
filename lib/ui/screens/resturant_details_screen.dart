@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:rrs_app/core/models/meals.dart';
 import 'package:rrs_app/ui/screens/raiting_screen.dart';
 import 'package:rrs_app/utils/constants.dart';
 import '../../core/models/restaurant_list.dart';
+import '../../core/provider/meals.dart';
 import '../../core/provider/restrunt_list_provider.dart';
 import '../widgets/widgets.dart';
 import 'food_menue_more.dart';
@@ -40,10 +42,10 @@ class _ResturantDetailssState extends ConsumerState<ResturantDetailss> {
   bool isLoading = false;
   @override
   Widget build(BuildContext context) {
-    RestaurantList? restruntList;
-    ref.watch(restruntListFutureProvider).when(
+    Meals? meals;
+    ref.watch(mealsFutureProvider).when(
       data: (data) {
-        restruntList = data;
+        meals = data;
         isLoading = false;
         isError = false;
       },
@@ -298,14 +300,14 @@ class _ResturantDetailssState extends ConsumerState<ResturantDetailss> {
                               shrinkWrap: true,
                               physics: const NeverScrollableScrollPhysics(),
                               padding: EdgeInsets.zero,
-                              itemCount: restruntList?.data.length ?? 5,
+                              itemCount: meals?.data.length ?? 5,
                               gridDelegate:
                                   const SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2,
                                 mainAxisExtent: 208,
                               ),
                               itemBuilder: (context, i) {
-                                print("lenttth ${restruntList?.data.length}");
+                                print("lenttth ${meals?.data.length}");
                                 return Container(
                                   margin: const EdgeInsets.all(4),
                                   decoration: BoxDecoration(
@@ -323,16 +325,14 @@ class _ResturantDetailssState extends ConsumerState<ResturantDetailss> {
                                               top: Radius.circular(7)),
                                         ),
                                         child: MyCashedNetworkImage(
-                                            image: images[i]),
+                                            image: meals?.data[i].image ?? ''),
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.all(8.0),
                                         child: Text(
                                           isLoading
                                               ? 'looooading'
-                                              : restruntList
-                                                      ?.data[i].name?.ar ??
-                                                  '',
+                                              : meals?.data[i].name?.ar ?? '',
                                           style: BodyTextStyle,
                                           textAlign: TextAlign.start,
                                         ),

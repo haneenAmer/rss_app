@@ -28,14 +28,14 @@ class Meals {
 }
 
 class Meal {
-  final String id;
-  final String image;
-  final String nameId;
-  final String tenantId;
-  final DateTime createdAt;
-  final dynamic updatedAt;
-  final Name name;
-  final Tenant tenant;
+  final String? id;
+  final String? image;
+  final String? nameId;
+  final String? tenantId;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
+  final Name? name;
+  final Tenant? tenant;
 
   Meal({
     required this.id,
@@ -54,7 +54,7 @@ class Meal {
     String? nameId,
     String? tenantId,
     DateTime? createdAt,
-    dynamic updatedAt,
+    DateTime? updatedAt,
     Name? name,
     Tenant? tenant,
   }) =>
@@ -85,15 +85,15 @@ class Meal {
         "image": image,
         "nameId": nameId,
         "tenantId": tenantId,
-        "createdAt": createdAt.toIso8601String(),
+        "createdAt": createdAt?.toIso8601String(),
         "updatedAt": updatedAt,
-        "name": name.toJson(),
-        "tenant": tenant.toJson(),
+        "name": name?.toJson(),
+        "tenant": tenant?.toJson(),
       };
 }
 
 class Name {
-  final String ar;
+  final String? ar;
 
   Name({
     required this.ar,
@@ -116,8 +116,8 @@ class Name {
 }
 
 class Tenant {
-  final String id;
-  final Name name;
+  final String? id;
+  final Name? name;
 
   Tenant({
     required this.id,
@@ -140,6 +140,6 @@ class Tenant {
 
   Map<String, dynamic> toJson() => {
         "id": id,
-        "name": name.toJson(),
+        "name": name?.toJson(),
       };
 }

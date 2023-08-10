@@ -6,16 +6,24 @@ import 'package:rrs_app/ui/screens/resturant_details_screen.dart';
 import 'package:rrs_app/ui/widgets/widgets.dart';
 import 'package:rrs_app/utils/constants.dart';
 
-class HomeScreen extends StatefulWidget {
-  HomeScreen({Key? key}) : super(key: key);
+class HomeScreen extends ConsumerStatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends ConsumerState<HomeScreen> {
+  @override
+  void initState() {
+    // ref.read(restruntListStateNotifierProvider.notifier).getRestruntList();
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+    // RestruntList? restruntList = ref.watch(restruntListStateNotifierProvider);
     return MaterialApp(
       home: Scaffold(
           backgroundColor: AppColors.greyBackground,

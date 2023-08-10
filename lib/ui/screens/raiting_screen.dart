@@ -140,15 +140,17 @@ FloatingActionButton FloatingButton(BuildContext context) {
   );
 }
 
-Align backFBA() {
+Align backFBA(BuildContext context) {
   return Align(
       alignment: Alignment.bottomRight,
       child: Padding(
         padding: const EdgeInsets.only(top: 185, right: 20),
         child: GestureDetector(
           onTap: () {
-            // Navigator.push(context,
-            //     MaterialPageRoute(builder: ((context) => ResturantDetailss())));
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ResturantDetailss()),
+            );
           },
           child: Container(
             alignment: Alignment.center,
@@ -180,7 +182,7 @@ Align FBA() {
           color: AppColors.greenMain,
           // border: Border.all(color: AppColors.greenMain, width: 2)
         ),
-        child: Text(
+        child: const Text(
           'موافق',
           textAlign: TextAlign.center,
           style: BodyTextStyle,

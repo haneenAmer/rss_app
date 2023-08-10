@@ -1,23 +1,23 @@
-class RestruntList {
+class RestaurantList {
   final int count;
   final List<Restrunt> data;
 
-  RestruntList({
+  RestaurantList({
     required this.count,
     required this.data,
   });
 
-  RestruntList copyWith({
+  RestaurantList copyWith({
     int? count,
     List<Restrunt>? data,
   }) {
-    return RestruntList(
+    return RestaurantList(
       count: count ?? this.count,
       data: data ?? this.data,
     );
   }
 
-  factory RestruntList.fromJson(Map<String, dynamic> json) => RestruntList(
+  factory RestaurantList.fromJson(Map<String, dynamic> json) => RestaurantList(
         count: json["count"],
         data:
             List<Restrunt>.from(json["data"].map((x) => Restrunt.fromJson(x))),
@@ -27,9 +27,9 @@ class RestruntList {
         "count": count,
         "data": List<dynamic>.from(data.map((x) => x.toJson())),
       };
-//     RestruntList RestruntListFromJson(String str) => RestruntList.fromJson(json.decode(str));
+//     RestaurantList RestauntListFromJson(String str) => RestauntList.fromJson(json.decode(str));
 
-// String RestruntListToJson(RestruntList data) => json.encode(data.toJson());
+// String RestaurantListToJson(RestauntList data) => json.encode(data.toJson());
 }
 
 class Restrunt {
@@ -39,6 +39,7 @@ class Restrunt {
   final double? lng;
   final double? lat;
   final Name? name;
+  final String image;
 
   Restrunt({
     required this.id,
@@ -47,6 +48,7 @@ class Restrunt {
     required this.lng,
     required this.lat,
     required this.name,
+    this.image = '',
   });
 
   Restrunt copyWith({
