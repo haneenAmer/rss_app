@@ -33,11 +33,11 @@ class HomePageAds {
 }
 
 class HomePageAd {
-  final String id;
-  final String image;
-  final String titleId;
-  final dynamic url;
-  final DateTime createdAt;
+  final String? id;
+  final String? image;
+  final String? titleId;
+  final dynamic? url;
+  final DateTime? createdAt;
 
   HomePageAd({
     required this.id,
@@ -75,6 +75,6 @@ class HomePageAd {
         "image": image,
         "titleId": titleId,
         "url": url,
-        "createdAt": createdAt.toIso8601String(),
+        "createdAt": createdAt?.toIso8601String(),
       };
 }
