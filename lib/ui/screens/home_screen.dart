@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:rrs_app/core/models/home_page_ads.dart';
+import 'package:rrs_app/core/models/restaurant_list.dart';
+import 'package:rrs_app/core/provider/home_page_ads.dart';
+import 'package:rrs_app/core/provider/id_provider.dart';
+import 'package:rrs_app/core/provider/restrunt_list_provider.dart';
 import 'package:rrs_app/ui/screens/profile.dart';
 import 'package:rrs_app/ui/screens/resturant_details_screen.dart';
 import 'package:rrs_app/ui/widgets/widgets.dart';
@@ -21,9 +26,25 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     super.initState();
   }
 
+  bool isError = false;
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
     // RestruntList? restruntList = ref.watch(restruntListStateNotifierProvider);
+    HomePageAds? homePageAds;
+    ref.watch(homePageAdsFutureProvider).when(
+      data: (data) {
+        homePageAds = data;
+        //isLoading = false;
+        isError = false;
+      },
+      error: (_, __) {
+        isError = true;
+      },
+      loading: () {
+        isLoading = true;
+      },
+    );
     return MaterialApp(
       home: Scaffold(
           backgroundColor: AppColors.greyBackground,
@@ -76,7 +97,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                   isLoop: true,
                                   children: [
                                     for (int i = 0; i < Ads.length; i++)
-                                      MyCashedNetworkImage(image: Ads[i])
+                                      //meals?.data[i].image ?? ''
+                                      MyCashedNetworkImage(
+                                          image:
+                                              homePageAds?.data[i].image ?? '')
                                   ]),
                             )),
                       )),
@@ -139,6 +163,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     for (var i = 0; i < number; i++) {
       containerList.add(GestureDetector(
           onTap: () {
+            //ref.read(idProvider.notifier).state= data[i].tlantId;
             Navigator.of(context).push(createRoute(ResturantDetailss()));
           },
           child: Card(
