@@ -9,6 +9,7 @@ class HomePageAdsServices {
   Future homePageAdsResponse() async {
     try {
       final response = await dio.get(endPoint);
+      print("hi ${response.data}");
       return response;
     } catch (e) {
       rethrow;
