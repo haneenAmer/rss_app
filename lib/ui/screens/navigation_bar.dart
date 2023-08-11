@@ -14,9 +14,9 @@ class NavBar extends StatefulWidget {
 class _NavBarState extends State<NavBar> {
   int _selectedIndex = 0;
   final List<Widget> _widgetOptions = <Widget>[
-    HomeScreen(),
-    SeachScreen(),
-    FavScreen(),
+    const HomeScreen(),
+    const SeachScreen(),
+    const FavScreen(),
     MoreScreen()
   ];
 
@@ -40,18 +40,20 @@ class _NavBarState extends State<NavBar> {
           ),
           child: SafeArea(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
               child: GNav(
                 // rippleColor: Color(0xff18D3AB)!,
                 hoverColor: AppColors.greenMain,
                 gap: 8,
                 activeColor: AppColors.blackMain,
                 iconSize: 24,
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                duration: Duration(milliseconds: 400),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                duration: const Duration(milliseconds: 400),
                 tabBackgroundColor: AppColors.greenMain,
                 color: AppColors.blackMain,
-                tabs: [
+                tabs: const [
                   GButton(
                     icon: Icons.home,
                     text: 'الرأيسية',
