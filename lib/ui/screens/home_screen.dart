@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:rrs_app/core/models/home_page_ads.dart';
-import 'package:rrs_app/core/models/restaurant_list.dart';
-import 'package:rrs_app/core/provider/home_page_ads.dart';
-import 'package:rrs_app/core/provider/id_provider.dart';
-import 'package:rrs_app/core/provider/restrunt_list_provider.dart';
 import 'package:rrs_app/ui/screens/profile.dart';
 import 'package:rrs_app/ui/screens/resturant_details_screen.dart';
 import 'package:rrs_app/ui/widgets/widgets.dart';
 import 'package:rrs_app/utils/constants.dart';
+
+import '../../core/provider/home_page_ads.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -19,6 +17,8 @@ class HomeScreen extends ConsumerStatefulWidget {
 }
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
+  HomePageAds? homePageAds;
+
   @override
   void initState() {
     // ref.read(restruntListStateNotifierProvider.notifier).getRestruntList();
@@ -96,11 +96,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                   autoPlayInterval: 3000,
                                   isLoop: true,
                                   children: [
-                                    for (int i = 0; i < Ads.length; i++)
-                                      //meals?.data[i].image ?? ''
-                                      MyCashedNetworkImage(
-                                          image:
-                                              homePageAds?.data[i].image ?? '')
+                                    if (homePageAds?.data != null)
+                                      for (int i = 0;
+                                          i < homePageAds!.data.length;
+                                          i++)
+                                        MyCashedNetworkImage(
+                                            image: homePageAds?.data[i].image ??
+                                                '')
                                   ]),
                             )),
                       )),
