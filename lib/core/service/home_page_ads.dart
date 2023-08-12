@@ -10,7 +10,7 @@ class HomePageAdsServices {
     try {
       final response = await dio.get(endPoint);
       print("hi ${response.data}");
-      return response;
+      return response.data;
     } catch (e) {
       rethrow;
     }
