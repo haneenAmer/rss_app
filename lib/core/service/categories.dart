@@ -9,7 +9,7 @@ class CategoriesServices {
   Future categoriesResponse() async {
     try {
       final response = await dio.get(endPoint);
-      return response;
+      return response.data;
     } catch (e) {
       rethrow;
     }
