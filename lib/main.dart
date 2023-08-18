@@ -8,9 +8,9 @@ import 'package:rrs_app/ui/screens/resturant_details_screen.dart';
 import 'package:rrs_app/ui/screens/signin_screen.dart';
 import 'package:rrs_app/ui/screens/splash_screen.dart';
 
-final nameProvider = Provider<String>((ref) {
-  return 'Hello world';
-});
+final nameProvider = Provider((ref) => 'null');
+
+/// ref allow to communicate from this provider to other providers
 void main() {
   runApp(const ProviderScope(child: MyApp()));
 }
