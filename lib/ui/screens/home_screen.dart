@@ -6,31 +6,21 @@ import 'package:rrs_app/ui/screens/profile.dart';
 import 'package:rrs_app/ui/screens/resturant_details_screen.dart';
 import 'package:rrs_app/ui/widgets/widgets.dart';
 import 'package:rrs_app/utils/constants.dart';
-
 import '../../core/provider/home_page_ads.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
-
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   HomePageAds? homePageAds;
-
   @override
-  void initState() {
-    // ref.read(restruntListStateNotifierProvider.notifier).getRestruntList();
-
-    super.initState();
-  }
-
   bool isError = false;
   bool isLoading = false;
   @override
   Widget build(BuildContext context) {
-    // RestruntList? restruntList = ref.watch(restruntListStateNotifierProvider);
     HomePageAds? homePageAds;
     ref.watch(homePageAdsFutureProvider).when(
       data: (data) {
