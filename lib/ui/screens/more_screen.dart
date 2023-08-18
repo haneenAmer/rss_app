@@ -1,28 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:rrs_app/main.dart';
 
-class MoreScreen extends StatelessWidget {
+class MoreScreen extends ConsumerWidget {
   MoreScreen({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        // body: Container(
-        //     child: RatingBar.builder(
-        //   initialRating: 1,
-        //   minRating: 1,
-        //   direction: Axis.horizontal,
-        //   allowHalfRating: true,
-        //   itemCount: 5,
-        //   itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
-        //   itemBuilder: (context, _) => const Icon(
-        //     Icons.star,
-        //     color: Colors.amber,
-        //   ),
-        //   onRatingUpdate: (rating) {
-        //     print(rating);
-        //   },
-        // )),
-        );
+  Widget build(BuildContext context, WidgetRef ref) {
+    final name = ref.watch(nameProvider);
+    return const Scaffold(
+      body: Text('non null'),
+    );
   }
 }
