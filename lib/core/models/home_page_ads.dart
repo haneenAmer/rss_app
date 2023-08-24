@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final HomePageAds = HomePageAdsFromJson(jsonString);
-
 class HomePageAds {
   final int count;
   final List<HomePageAd> data;
