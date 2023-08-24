@@ -29,9 +29,9 @@ class Categories {
 }
 
 class Category {
-  final String id;
-  final String image;
-  final Name name;
+  final String? id;
+  final String? image;
+  final Name? name;
 
   Category({
     required this.id,
@@ -59,7 +59,7 @@ class Category {
   Map<String, dynamic> toJson() => {
         "id": id,
         "image": image,
-        "name": name.toJson(),
+        "name": name?.toJson(),
       };
 }
 
