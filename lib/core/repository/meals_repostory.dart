@@ -5,7 +5,6 @@ import '../models/meals.dart';
 class MealsReposiory {
   final String id;
   MealsReposiory(this.id);
-  // MealsReposiory();
 
   Future<Meals> getMealsModel() async {
     MealsServicies mealsServicies =
