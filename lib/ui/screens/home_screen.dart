@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:rrs_app/core/models/categories.dart';
 import 'package:rrs_app/core/models/home_page_ads.dart';
+import 'package:rrs_app/core/revierpod/categories.dart';
 import 'package:rrs_app/ui/screens/profile.dart';
 import 'package:rrs_app/ui/screens/resturant_details_screen.dart';
 import 'package:rrs_app/ui/widgets/widgets.dart';
 import 'package:rrs_app/utils/constants.dart';
-import '../../core/provider/home_page_ads.dart';
+import '../../core/repository/categories.dart';
+import '../../core/revierpod/home_page_ads.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -16,16 +19,17 @@ class HomeScreen extends ConsumerStatefulWidget {
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   HomePageAds? homePageAds;
+
+  Categories? categories;
   @override
   bool isError = false;
   bool isLoading = false;
   @override
   Widget build(BuildContext context) {
-    HomePageAds? homePageAds;
+    //HomePageAds? homePageAds;
     ref.watch(homePageAdsFutureProvider).when(
       data: (data) {
         homePageAds = data;
-        //isLoading = false;
         isError = false;
       },
       error: (_, __) {
@@ -35,6 +39,19 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         isLoading = true;
       },
     );
+    ref.watch(categoriesProvider).when(
+      data: (data) {
+        categories = data;
+        isError = false;
+      },
+      error: (_, __) {
+        isError = true;
+      },
+      loading: () {
+        isLoading = true;
+      },
+    );
+
     return MaterialApp(
       home: Scaffold(
           backgroundColor: AppColors.greyBackground,
@@ -69,7 +86,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                         padding: const EdgeInsets.symmetric(
                             vertical: 10, horizontal: 5),
                         child: Container(
-                            //margin: EdgeInsets.all(8),
                             height: 200,
                             width: double.infinity,
                             decoration: BoxDecoration(
@@ -86,17 +102,21 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                   autoPlayInterval: 3000,
                                   isLoop: true,
                                   children: [
-                                    if (homePageAds?.data != null)
+                                    if (homePageAds?.data == null)
+                                      Image.asset('assets/images/pla.png')
+                                    else
                                       for (int i = 0;
                                           i < homePageAds!.data.length;
                                           i++)
                                         MyCashedNetworkImage(
                                             image: homePageAds?.data[i].image ??
-                                                '')
+                                                ''),
                                   ]),
                             )),
                       )),
                 ),
+
+                ///--------------- categories ---------------
                 SizedBox(
                     height: 150,
                     width: double.infinity,
@@ -116,10 +136,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                   decoration: BoxDecoration(
                                     color: const Color.fromARGB(
                                         255, 202, 200, 200),
-                                    borderRadius: BorderRadius.circular(4),
+                                    // borderRadius: BorderRadius.circular(4),
                                   ),
                                   child: MyCashedNetworkImage(
-                                      image: images[index]),
+                                      image:
+                                          categories?.data[index].image ?? ''),
                                 ),
                                 Text(
                                   foodHomeList[index],
