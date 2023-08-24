@@ -8,7 +8,8 @@ import 'package:rrs_app/ui/screens/resturant_details_screen.dart';
 import 'package:rrs_app/ui/screens/signin_screen.dart';
 import 'package:rrs_app/ui/screens/splash_screen.dart';
 
-final nameProvider = Provider((ref) => 'null');
+//final nameProvider = Provider((ref) => 'null');
+final nameProvider = StateProvider<String?>((ref) => 'null');
 
 /// ref allow to communicate from this provider to other providers
 void main() {
