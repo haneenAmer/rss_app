@@ -4,8 +4,8 @@ import 'package:rrs_app/core/models/meals.dart';
 import 'package:rrs_app/ui/screens/raiting_screen.dart';
 import 'package:rrs_app/utils/constants.dart';
 import '../../core/models/restaurant_list.dart';
-import '../../core/provider/meals.dart';
-import '../../core/provider/restrunt_list_provider.dart';
+import '../../core/revierpod/meals.dart';
+import '../../core/revierpod/restrunt_list_provider.dart';
 import '../widgets/widgets.dart';
 import 'food_menue_more.dart';
 
