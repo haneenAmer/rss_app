@@ -4,16 +4,16 @@ import 'package:rrs_app/utils/constants.dart';
 import 'navigation_bar.dart';
 
 class OnBoarding extends StatelessWidget {
-  OnBoarding({Key? key}) : super(key: key);
+  const OnBoarding({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         body: Stack(children: [
-          Container(
+          const SizedBox(
             width: double.infinity,
-            child: const Image(
+            child: Image(
                 fit: BoxFit.cover,
                 image: AssetImage('assets/images/onboarding.png')),
           ),
@@ -42,7 +42,7 @@ class OnBoarding extends StatelessWidget {
               //crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Text(
+                const Text(
                   textAlign: TextAlign.center,
                   'مرحبا بك الى عالم المطاعم ',
                   style: TextStyle(
@@ -58,12 +58,12 @@ class OnBoarding extends StatelessWidget {
                       fontFamily: 'Tajawal', fontSize: 18, color: Colors.white),
                 ),
 
-                //VerticalSpace(10),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextButton(
                     style: ButtonStyle(
-                      minimumSize: MaterialStateProperty.all(Size(370, 60)),
+                      minimumSize:
+                          MaterialStateProperty.all(const Size(370, 60)),
                       backgroundColor:
                           MaterialStateProperty.all(AppColors.greenMain),
                       shape: MaterialStateProperty.all(
