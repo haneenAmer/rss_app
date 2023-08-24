@@ -17,8 +17,7 @@ class RestruntListRepository {
       /// خزناها بالمودل
       RestaurantList restruntList = RestaurantList.fromJson(json);
 
-      /// first ? why not index ?
-      print(restruntList.data.first.name?.ar);
+      //print(restruntList.data.first.name?.ar);
 
       return restruntList;
     } catch (e) {
