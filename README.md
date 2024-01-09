@@ -1,16 +1,46 @@
-# rrs_app
+# Restaurant Rating System
 
-A new Flutter project.
+## Overview
 
-## Getting Started
+The Restaurant Rating System is a Flutter application designed to provide users with the ability to rate and review restaurants. This application uses the Riverpod state management library to efficiently manage and update the application state.
 
-This project is a starting point for a Flutter application.
+## Features
 
-A few resources to get you started if this is your first Flutter project:
+- **Restaurant Listings:** View a list of restaurants with basic information.
+- **State Management with Riverpod:** Efficiently manage the application's state using Riverpod.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Folder Structure
+
+```
+restaurant-rating-system/
+│
+├── lib/
+│   ├── main.dart
+│   ├── screens/
+│   │   ├── home_screen.dart
+│   │   ├── restaurant_detail_screen.dart
+│   │   └── user_profile_screen.dart
+│   │
+│   ├── providers/
+│   │   ├── auth_provider.dart
+│   │   ├── restaurant_provider.dart
+│   │   └── user_provider.dart
+│   │
+│   └── widgets/
+│       ├── restaurant_list_item.dart
+│       └── review_form.dart
+│
+├── test/
+│   ├── auth_test.dart
+│   └── restaurant_test.dart
+│
+├── pubspec.yaml
+└── README.md
+```
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
